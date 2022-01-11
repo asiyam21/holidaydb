@@ -1,0 +1,76 @@
+import sqlite3
+sqlite3.connect('holiday')
+conn = sqlite3.connect('holiday') 
+c = conn.cursor()
+
+
+c.execute('''
+          CREATE TABLE IF NOT EXISTS destinations
+          ([location] TEXT PRIMARY KEY, [timeofyear] TEXT, [typeofholiday] TEXT, [weather] TEXT, [activities] TEXT)
+          ''')
+
+
+c.execute('''
+          CREATE TABLE IF NOT EXISTS flights
+          ([location] TEXT PRIMARY KEY, [timeofyear] TEXT, [airport] TEXT, [date] INTEGER, [time] INTEGER, [price] INTEGER)
+          ''')
+
+
+c.execute('''
+          INSERT INTO destinations (location, timeofyear, typeofholiday, weather, activities, price)
+
+                VALUES
+                ('Bodrum', 'spring', 'beach', 'hot', 'water sports'),
+                ('Ras Al Khaimah', 'spring', 'beach', 'hot', 'water sports'),
+                ('Suva', 'winter', 'beach', 'tropical', 'water sports'),
+                ('Muscat', 'autumn', 'city', 'hot', 'museums'),
+                ('Lapland', 'winter', 'adventure', 'snowy', 'safaris'),
+                ('Germany', 'summer', 'cultural', 'hot', 'museums'),
+                ('Accra', 'autumn', 'city', 'tropical', 'nightlife'),
+                ('Cape Town', 'winter', 'city', 'temperate', 'safaris'),
+                ('Cusco', 'autumn', 'cultural', 'temperate', 'safaris'), 
+                ('Banff', 'autumn', 'adventure', 'snowy', 'safaris')
+          ''')
+
+
+c.execute('''
+          INSERT INTO flights (location, timeofyear, airport, date, time, price)
+
+                VALUES
+                ('Bodrum', 'spring', 'Milas–Bodrum Airport', 030422, 0500, 100),
+                ('Bodrum', 'spring', 'Milas–Bodrum Airport', 270422, 1600, 145),
+                ('Bodrum', 'spring', 'Milas–Bodrum Airport', 050422, 2300, 100),
+                ('Ras al Khaimah', 'spring', 'Ras al Khaimah Airport', 040422, 0400, 261),
+                ('Ras al Khaimah', 'spring', 'Ras al Khaimah Airport', 290422, 1730,342),
+                ('Ras al Khaimah', 'spring', 'Ras al Khaimah Airport', 010622, 1100, 289),
+                ('Suva', 'winter', 'Suva-Nausori Airport', 231222, 1300, 560),
+                ('Suva', 'winter', 'Suva-Nausori Airport', 100123, 0630, 390),
+                ('Suva', 'winter', 'Suva-Nausori Airport', 230223, 2000, 480),
+                ('Muscat', 'autumn', 'Muscat International Airport', 290922, 0300, 270),
+                ('Muscat', 'autumn', 'Muscat International Airport', 231022, 1545, 348),
+                ('Muscat', 'autumn', 'Muscat International Airport', 041022, 2200, 299),
+                ('Lapland', 'winter', 'Rovaniemi Airport', 241222, 1430, 245),
+                ('Lapland', 'winter', 'Rovaniemi Airport', 291222, 1030, 226),
+                ('Lapland', 'winter', 'Rovaniemi Airport', 250122, 0530, 189),
+                ('Germany', 'summer', 'Innsbruck Airport', 290622, 0330, 80),
+                ('Germany', 'summer', 'Innsbruck Airport', 140722, 1330, 135),
+                ('Germany', 'summer', 'Innsbruck Airport', 020822, 2330, 105),
+                ('Accra', 'autumn', 'Kotoka International Airport', 280922, 0230, 355),
+                ('Accra', 'autumn', 'Kotoka International Airport', 221022, 1540, 580),
+                ('Accra', 'autumn', 'Kotoka International Airport', 031122, 2130, 465),
+                ('Cape Town', 'winter', 'Cape Town International Airport', 221222, 1415, 560),
+                ('Cape Town', 'winter', 'Cape Town International Airport', 291222, 0045, 410),
+                ('Cape Town', 'winter', 'Cape Town International Airport', 160123, 2345, 379),
+                ('Cusco', 'autumn', 'Alejandro Velasco Astete Cusco International Airport', 230922, 0115, 289),
+                ('Cusco', 'autumn', 'Alejandro Velasco Astete Cusco International Airport', 221022, 1515, 340),
+                ('Cusco', 'autumn', 'Alejandro Velasco Astete Cusco International Airport', 141122, 2040, 330),
+                ('Banff', 'autumn', 'Banff Airport', 291122, 0145, 405),
+                ('Banff', 'autumn', 'Banff Airport', 241022, 1745, 560),
+                ('Banff', 'autumn', 'Banff Airport', 031022, 2340, 425)
+
+          ''')
+
+
+
+conn.commit()
+
